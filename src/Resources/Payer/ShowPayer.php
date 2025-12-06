@@ -2,9 +2,9 @@
 
 namespace Hanafalah\ModulePayer\Resources\Payer;
 
-use Hanafalah\ModuleOrganization\Resources\ShowOrganization;
+use Hanafalah\ModulePayer\Resources\Company\ShowCompany;
 
-class ShowPayer extends ShowOrganization
+class ShowPayer extends ViewPayer
 {
   /**
    * Transform the resource into an array.
@@ -15,8 +15,8 @@ class ShowPayer extends ShowOrganization
   public function toArray(\Illuminate\Http\Request $request): array
   {
     $arr   = [];
-    $view  = $this->resolveNow(new ViewPayer($this));
-    $arr   = $this->mergeArray(parent::toArray($request), $view, $arr);
+    $show  = $this->resolveNow(new ShowCompany($this));
+    $arr   = $this->mergeArray(parent::toArray($request), $show, $arr);
     return $arr;
   }
 }

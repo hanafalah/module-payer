@@ -2,15 +2,16 @@
 
 namespace Hanafalah\ModulePayer\Resources\Payer;
 
-use Hanafalah\ModuleOrganization\Resources\ViewOrganization;
+use Hanafalah\ModulePayer\Resources\Company\ViewCompany;
 
-class ViewPayer extends ViewOrganization
+class ViewPayer extends ViewCompany
 {
   public function toArray(\Illuminate\Http\Request $request): array
   {
-    $arr = [];
+    $arr = [
+      'is_payer_able' => $this->is_payer_able
+    ];
     $arr = $this->mergeArray(parent::toArray($request), $arr);
-
     return $arr;
   }
 }
