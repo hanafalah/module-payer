@@ -24,6 +24,7 @@ class Company extends Organization implements Contracts\Company
 
     public function prepareStoreCompany(CompanyData $company_dto): Model{
         $company = $this->prepareStoreOrganization($company_dto);
+        $company->generatePaymentSummaryDeferred();
         return $this->company_model = $company;
     }
 
